@@ -1,0 +1,110 @@
+[workspace]
+members = [
+    "dnsauth",
+    "fuzzer-protocol",
+    "fuzzer",
+    "libcoverage",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+rust-version = "1.63"
+version = "0.1.0"
+
+[workspace.dependencies]
+async-trait = "0.1.68"
+bstr = "1.5.0"
+chrono.features = ["serde"]
+chrono.version = "0.4.24"
+clap.features = ["derive"]
+clap.version = "4.3.0"
+color-eyre = "0.6.2"
+comfy-table.version = "6.1.4"
+comfy-table.default-features = false
+console-subscriber = "0.1.9"
+counter = "0.5.7"
+crossterm.features = ["event-stream"]
+crossterm.version = "0.26.0"
+diff.version = "0.1.12"
+dnsauth.features = ["diffing"]
+dnsauth.path = "./dnsauth"
+env_logger.version = "0.10.0"
+expect-test = "1.4.1"
+futures = "0.3.28"
+fuzzer_protocol.path = "./fuzzer-protocol"
+itertools.version = "0.10.5"
+libc = "0.2.144"
+log = "0.4.16"
+misc_utils = "4.2.4"
+natord = "1.0.9"
+nix.default-features = false
+nix.features = ["process", "signal"]
+nix.version = "0.26.2"
+nohash-hasher.version = "0.2.0"
+once_cell = "1.17.1"
+postcard.features = ["alloc"]
+postcard.version = "1.0.4"
+pretty_assertions = "1.3.0"
+rand.version = "0.8.5"
+rand_chacha.features = ["serde1"]
+rand_chacha.version = "0.3.1"
+serde.features = ["derive"]
+serde.version = "1.0.163"
+serde_json.version = "1.0.96"
+serde_with.features = ["base64"]
+serde_with.version = "3.0.0"
+sha2 = "0.10.6"
+string_cache.version = "0.8.7"
+string_cache_codegen.version = "0.5.2"
+strum.features = ["derive"]
+strum.version = "0.24.1"
+tempfile = "3.5.0"
+tokio.features = [
+    "fs",
+    "io-util",
+    "macros",
+    "net",
+    "parking_lot",
+    "process",
+    "rt",
+    "signal",
+    "sync",
+    "time",
+]
+tokio.version = "1.28.1"
+toml = "0.7.4"
+tui-logger.default-features = false
+tui-logger.features = ["ratatui-support"]
+tui-logger.version = "0.9.1"
+tui.package = "ratatui"
+tui.version = "0.20.1"
+uuid.features = ["serde", "v4"]
+uuid.version = "1.3.2"
+
+# Full debug is mostly not neccessary. So speedup the compile time a bit and reduce artifact size.
+[profile.dev]
+debug = 1 # lines only
+
+# This applies to all dependencies, but not this crate or any workspace member
+# Compile all dependencies with highest optimization level
+# This leads to better performance for debug builds, with acceptable compile time overhead
+[profile.dev.package."*"]
+debug = 1     # lines only
+opt-level = 3
+
+# Disable debug information as they are not needed
+# Enable some slight optimizations for build scripts and proc-macros
+#   Default is opt-level = 0
+[profile.dev.build-override]
+debug = false
+opt-level = 1
+
+[profile.release]
+debug = 1    # lines only
+lto = "thin"
+
+[patch.crates-io]
+trust-dns-client = {git = "https://github.com/jonasbb/trust-dns.git", branch = "v0.21.2-patched"}
+trust-dns-proto = {git = "https://github.com/jonasbb/trust-dns.git", branch = "v0.21.2-patched"}
+trust-dns-server = {git = "https://github.com/jonasbb/trust-dns.git", branch = "v0.21.2-patched"}

@@ -1,0 +1,143 @@
+[common]
+log-level = "info"
+# How many messages should be used during fuzzing
+fuzzing-messages = 10
+
+# Root Zone
+[[auth]]
+listen-addresses = [
+    "127.64.1.1:53",
+]
+server-id = "AuthNS Root"
+ttl = 1800
+zone = "."
+# SOA: Primary Mail SerialNumber Refresh Retry Expire Minimum
+data = [
+    {name = ".", type = "SOA", rdata = "ns-root.ns. testing.test. 15337001 1800 900 604800 1800"},
+    {name = ".", type = "NS", rdata = "ns-root.ns."},
+    {name = "ns-root.ns.", type = "A", rdata = "127.64.1.1"},
+
+    # Zones used by the fuzzer
+    # Each test runs in its own SLD `0000.fuzz.`, `0001.fuzz.`, etc.
+    # The nameservers are located outside of the zone, such that `NS` and `A` lookups for them do not end up on the fuzzer
+    # Delegation for `fuzz.`
+    {name = "fuzz.", type = "NS", rdata = "ns-fuzz.ns."},
+    # Delegation for `ns.`
+    {name = "ns.", type = "NS", rdata = "ns-ns.ns."},
+    {name = "ns-ns.ns.", type = "A", rdata = "127.98.1.1"},
+
+    # Delegation for com.
+    {name = "com.", type = "NS", rdata = "ns1.com."},
+    {name = "ns1.com.", type = "A", rdata = "127.96.1.1"},
+    # Delegation for test.
+    {name = "test.", type = "NS", rdata = "ns1.test."},
+    {name = "ns1.test.", type = "A", rdata = "127.128.1.1"},
+    # Delegation for net.
+    {name = "net.", type = "NS", rdata = "ns1.net."},
+    {name = "ns1.net.", type = "A", rdata = "127.192.1.1"},
+]
+
+# `fuzz.` Zone
+[[auth]]
+data = [
+    {name = "fuzz.", type = "SOA", rdata = "ns-fuzz. testing.test. 15337002 1800 900 604800 1800"},
+    {name = "fuzz.", type = "NS", rdata = "ns-fuzz.ns."},
+    # Dynamically add delegations for each testcase, i.e., `0000.fuzz.`, `0001.fuzz.`, etc.
+]
+listen-addresses = [
+    "127.97.1.1:53",
+]
+server-id = "AuthNS fuzz."
+ttl = 1800
+zone = "fuzz."
+
+# `ns.` Zone
+[[auth]]
+data = [
+    {name = "ns.", type = "SOA", rdata = "ns-ns.ns. testing.test. 15337002 1800 900 604800 1800"},
+    {name = "ns.", type = "NS", rdata = "ns-ns.ns."},
+    {name = "ns-root.ns.", type = "A", rdata = "127.64.1.1"},
+    {name = "ns-fuzz.ns.", type = "A", rdata = "127.97.1.1"},
+    {name = "ns-ns.ns.", type = "A", rdata = "127.98.1.1"},
+    # Dynamically add IP addresses, for each testcase, i.e., `ns-0000.ns.`, `ns-0001.ns.`, etc.
+]
+listen-addresses = [
+    "127.98.1.1:53",
+]
+server-id = "AuthNS ns."
+ttl = 1800
+zone = "ns."
+
+# com. Zone
+[[auth]]
+data = [
+    {name = "com.", type = "SOA", rdata = "ns1.com. testing.test. 15337002 1800 900 604800 1800"},
+    {name = "com.", type = "NS", rdata = "ns1.com."},
+    {name = "ns1.com.", type = "A", rdata = "127.96.1.1"},
+    {name = "www.example.com.", type = "A", rdata = "12.34.56.78"},
+    # Delegation for fuzzing.com.
+    {name = "fuzzing.com.", type = "NS", rdata = "ns1.fuzzing.com."},
+    {name = "ns1.fuzzing.com.", type = "A", rdata = "127.250.0.1"},
+]
+listen-addresses = [
+    "127.96.1.1:53",
+]
+server-id = "AuthNS com."
+ttl = 255
+zone = "com."
+
+# test. Zone
+[[auth]]
+data = [
+    {name = "test.", type = "SOA", rdata = "nsa.test. testing.test. 15337002 1800 900 604800 1800"},
+    {name = "test.", type = "NS", rdata = "ns1.test."},
+    {name = "ns1.test.", type = "A", rdata = "127.128.1.1"},
+    {name = "www0.shortlived.test.", type = "A", rdata = "6.1.1.1"},
+    {name = "www1.shortlived.test.", type = "A", rdata = "6.2.2.2"},
+    {name = "www2.shortlived.test.", type = "A", rdata = "6.3.3.3"},
+]
+listen-addresses = [
+    "127.128.1.1:53",
+]
+server-id = "AuthNS test."
+ttl = 5
+zone = "test."
+
+
+# net. Zone
+[[auth]]
+data = [
+    {name = "net.", type = "SOA", rdata = "nsa.net. testing.test. 15337002 1800 900 604800 1800"},
+    {name = "net.", type = "NS", rdata = "ns1.test."},
+    {name = "ns1.net.", type = "A", rdata = "127.192.1.1"},
+    # Delegation for net.
+    {name = "victim.net.", type = "NS", rdata = "ns1.victim.net."},
+    {name = "victim.net.", type = "NS", rdata = "ns2.victim.net."},
+    {name = "ns1.victim.net.", type = "A", rdata = "127.193.1.1"},
+    {name = "ns2.victim.net.", type = "A", rdata = "127.193.2.1"},
+]
+listen-addresses = [
+    "127.192.1.1:53",
+]
+server-id = "AuthNS net."
+ttl = 1800
+zone = "net."
+
+
+# victim.net. Zone
+[[auth]]
+data = [
+    {name = "victim.net.", type = "SOA", rdata = "nsa.net. testing.test. 15337002 1800 900 604800 1800"},
+    {name = "victim.net.", type = "NS", rdata = "ns1.test."},
+    {name = "ns1.victim.net.", type = "A", rdata = "127.193.1.1"},
+    {name = "ns2.victim.net.", type = "A", rdata = "127.193.2.1"},
+    {name = "www.victim.net.", type = "A", rdata = "33.33.33.33"},
+    {name = "sub.victim.net.", type = "A", rdata = "44.44.44.44"},
+]
+listen-addresses = [
+    "127.193.1.1:53",
+    "127.193.2.1:53",
+]
+server-id = "AuthNS victim.net."
+ttl = 1800
+zone = "victim.net."

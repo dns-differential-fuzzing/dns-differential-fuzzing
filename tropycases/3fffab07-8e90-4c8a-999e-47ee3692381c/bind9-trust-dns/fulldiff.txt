@@ -1,0 +1,63 @@
+    .fuzz_case.check_cache.#size                             1                                     1                                                                       
+    .fuzz_case.check_cache.0                                 ipgxl.test.fuzz.-A-IN                 ipgxl.test.fuzz.-A-IN                                                   
+    .fuzz_case.client_query.additionals.#count               0                                     0                                                                       
+    .fuzz_case.client_query.answers.#count                   0                                     0                                                                       
+    .fuzz_case.client_query.edns.dnssec_ok                   false                                 false                                                                   
+    .fuzz_case.client_query.edns.max_payload                 1200                                  1200                                                                    
+    .fuzz_case.client_query.edns.version                     0                                     0                                                                       
+    .fuzz_case.client_query.header.additional_count          1                                     1                                                                       
+    .fuzz_case.client_query.header.answer_count              0                                     0                                                                       
+    .fuzz_case.client_query.header.authentic_data            false                                 false                                                                   
+    .fuzz_case.client_query.header.authoritative             false                                 false                                                                   
+    .fuzz_case.client_query.header.checking_disabled         false                                 false                                                                   
+    .fuzz_case.client_query.header.id                        0                                     0                                                                       
+    .fuzz_case.client_query.header.message_type              response                              response                                                                
+    .fuzz_case.client_query.header.name_server_count         0                                     0                                                                       
+    .fuzz_case.client_query.header.op_code                   query                                 query                                                                   
+    .fuzz_case.client_query.header.query_count               1                                     1                                                                       
+    .fuzz_case.client_query.header.recursion_available       false                                 false                                                                   
+    .fuzz_case.client_query.header.recursion_desired         true                                  true                                                                    
+    .fuzz_case.client_query.header.response_code             NoError                               NoError                                                                 
+    .fuzz_case.client_query.header.truncated                 false                                 false                                                                   
+    .fuzz_case.client_query.name_servers.#count              0                                     0                                                                       
+    .fuzz_case.client_query.queries.#count                   1                                     1                                                                       
+    .fuzz_case.client_query.queries.0.name                   ipgxl.test.fuzz.                      ipgxl.test.fuzz.                                                        
+    .fuzz_case.client_query.queries.0.query_class            IN                                    IN                                                                      
+    .fuzz_case.client_query.queries.0.query_type             A                                     A                                                                       
+    .fuzz_case.client_query.sig0.#count                      0                                     0                                                                       
+    .fuzz_case.id                                            3fffab07-8e90-4c8a-999e-47ee3692381c  3fffab07-8e90-4c8a-999e-47ee3692381c                                    
+    .fuzz_case.server_responses.#count                       0                                     0                                                                       
+    .fuzz_result.cache_state.ipgxl.0000.fuzz.-A-IN           absent                                absent                                                                  
+ .  .fuzz_result.counters                                    74134                                 167893                                IncomparableCounters              
+    .fuzz_result.fuzzee_queries.#count                       0                                     0                                                                       
+ .  .fuzz_result.fuzzee_response.additionals.#count                                                0                                     MetaDiff, ErrorClientNoRrInAnswer 
+ .  .fuzz_result.fuzzee_response.answers.#count                                                    0                                     MetaDiff, ErrorClientNoRrInAnswer 
+ .  .fuzz_result.fuzzee_response.header.additional_count                                           0                                     ErrorClientNoRrInAnswer           
+ .  .fuzz_result.fuzzee_response.header.answer_count                                               0                                     ErrorClientNoRrInAnswer           
+ *  .fuzz_result.fuzzee_response.header.authentic_data                                             false                                                                   
+ *  .fuzz_result.fuzzee_response.header.authoritative                                              false                                                                   
+ .  .fuzz_result.fuzzee_response.header.checking_disabled                                          false                                 NoEdnsSupport                     
+ .  .fuzz_result.fuzzee_response.header.id                                                         35958                                 DnsId                             
+ *  .fuzz_result.fuzzee_response.header.message_type                                               response                                                                
+ .  .fuzz_result.fuzzee_response.header.name_server_count                                          0                                     ErrorClientNoRrInAnswer           
+ *  .fuzz_result.fuzzee_response.header.op_code                                                    query                                                                   
+ *  .fuzz_result.fuzzee_response.header.query_count                                                1                                                                       
+ *  .fuzz_result.fuzzee_response.header.recursion_available                                        false                                                                   
+ *  .fuzz_result.fuzzee_response.header.recursion_desired                                          true                                                                    
+ *  .fuzz_result.fuzzee_response.header.response_code                                              FormErr                                                                 
+ *  .fuzz_result.fuzzee_response.header.truncated                                                  false                                                                   
+ .  .fuzz_result.fuzzee_response.name_servers.#count                                               0                                     MetaDiff, ErrorClientNoRrInAnswer 
+ .  .fuzz_result.fuzzee_response.queries.#count                                                    1                                     MetaDiff                          
+ *  .fuzz_result.fuzzee_response.queries.0.name                                                    ipgxl.0000.fuzz.                                                        
+ *  .fuzz_result.fuzzee_response.queries.0.query_class                                             IN                                                                      
+ *  .fuzz_result.fuzzee_response.queries.0.query_type                                              A                                                                       
+ .  .fuzz_result.fuzzee_response.sig0.#count                                                       0                                     MetaDiff                          
+    .fuzz_result.id                                          3fffab07-8e90-4c8a-999e-47ee3692381c  3fffab07-8e90-4c8a-999e-47ee3692381c                                    
+    .fuzz_result.oracles.crashed_resolver                    false                                 false                                                                   
+    .fuzz_result.oracles.duplicate_records                   false                                 false                                                                   
+    .fuzz_result.oracles.excessive_answer_records            false                                 false                                                                   
+    .fuzz_result.oracles.excessive_queries                   false                                 false                                                                   
+    .fuzz_result.oracles.fake_data                           false                                 false                                                                   
+ *  .fuzz_result.oracles.responds_to_response                false                                 true                                                                    
+    .fuzz_result.response_idxs.#count                        0                                     0                                                                       
+ .  .resolver_name                                           bind9                                 trust-dns                             ResolverName                      

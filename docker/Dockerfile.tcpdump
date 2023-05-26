@@ -1,0 +1,8 @@
+FROM fedora:37
+
+RUN --mount=type=cache,target=/var/cache/dnf true \
+    && dnf install --assumeyes --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "tcpdump"
+
+ENTRYPOINT [ "/usr/sbin/tcpdump" ]
+CMD [ "-i", "any" ]

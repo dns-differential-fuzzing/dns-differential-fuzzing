@@ -1,0 +1,71 @@
+[package]
+default-run = "dnsauth"
+edition.workspace = true
+name = "dnsauth"
+rust-version.workspace = true
+version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "dnsauth"
+required-features = ["app"]
+
+[[bin]]
+name = "utils"
+required-features = ["app"]
+
+[features]
+app = [
+    "diffing",
+
+    "dep:clap",
+    "dep:env_logger",
+    "dep:misc_utils",
+    "dep:postcard",
+    "dep:rand_chacha",
+    "dep:rand",
+    "dep:toml",
+
+    "fuzzer_protocol/client",
+]
+diffing = ["dep:diff"]
+
+[dependencies]
+async-trait.workspace = true
+bstr.workspace = true
+chrono.workspace = true
+clap.optional = true
+clap.workspace = true
+color-eyre.workspace = true
+diff.optional = true
+diff.workspace = true
+env_logger.optional = true
+env_logger.workspace = true
+futures.workspace = true
+fuzzer_protocol.workspace = true
+log.workspace = true
+misc_utils.optional = true
+misc_utils.workspace = true
+nix.workspace = true
+postcard.optional = true
+postcard.workspace = true
+rand.optional = true
+rand.workspace = true
+rand_chacha.optional = true
+rand_chacha.workspace = true
+serde.workspace = true
+serde_with.workspace = true
+tokio.workspace = true
+toml.optional = true
+toml.workspace = true
+trust-dns-client = {version = "0.21.2", features = ["serde-config"]}
+trust-dns-proto = {version = "0.21.1", features = ["serde-config"]}
+trust-dns-server = "0.21.2"
+uuid.workspace = true
+
+[dev-dependencies]
+expect-test.workspace = true
+misc_utils.workspace = true
+pretty_assertions.workspace = true
+toml.workspace = true

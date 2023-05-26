@@ -1,0 +1,4 @@
+[toolchain]
+channel = "1.68"
+components = [ "clippy", "rustfmt" ]
+targets = [ "x86_64-unknown-linux-gnu" ]

@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+exec /usr/local/sbin/named -4 -n 1 -g -c /usr/local/etc/bind/bind.conf

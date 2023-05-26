@@ -1,0 +1,50 @@
+ARG VERSION=v9_11_0
+ARG PROGRAM=bind9_11
+
+FROM fedora:37 AS BUILDER
+ARG VERSION
+ARG PROGRAM
+LABEL fuzzee="${PROGRAM}-builder"
+
+# v9.11 has extra requirements that are not covered by the builddep step
+# * perl-diagnostics
+RUN true \
+    && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "dnf-command(builddep)" \
+    "clang" \
+    "compiler-rt" \
+    "git" \
+    "perl-diagnostics" \
+    && dnf builddep -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "bind" \
+    && dnf clean all
+
+WORKDIR /project
+RUN curl --output /project/${PROGRAM}.tar.gz https://codeload.github.com/isc-projects/bind9/tar.gz/refs/tags/${VERSION}
+# CAREFUL: Do not copy the full tools, as otherwise any change to the fuzzer leads to a rebuild
+# But the fuzzer is only needed in the second image.
+COPY ./tools/cc ./tools/cxx ./tools/libcoverage.a /usr/local/bin/
+COPY ./${PROGRAM}/build_${PROGRAM}.sh /project/
+RUN ./build_${PROGRAM}.sh
+
+FROM fedora:37
+ARG PROGRAM
+ARG INSTALL_DEBUG_TOOLS=""
+LABEL fuzzee="${PROGRAM}"
+RUN echo "${PROGRAM}" > /fuzzee
+
+RUN true \
+    && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "libuv" \
+    && dnf clean all
+
+# Install some debugging tools
+RUN --mount=type=bind,source=./tools,target=/tmp/tools bash /tmp/tools/install_debug_tools.sh
+
+COPY --from=BUILDER /usr/local /usr/local
+COPY ./${PROGRAM}/bind.conf ./${PROGRAM}/root.hints /usr/local/etc/bind/
+COPY ./tools/dnsauth ./${PROGRAM}/fuzzee /usr/local/bin/
+VOLUME [ "/config" ]
+WORKDIR /config
+ENTRYPOINT [ "/usr/local/bin/dnsauth" ]
+CMD [ "--config=/config/config.toml", "--fuzz-suite=/config/fuzz-suite.postcard", "--delayed-startup", "--ntests=50" ]

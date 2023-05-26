@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+exec /usr/local/sbin/trust-dns --debug --config=/usr/local/etc/trust-dns/trust-dns.toml

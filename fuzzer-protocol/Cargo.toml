@@ -1,0 +1,20 @@
+[package]
+edition.workspace = true
+name = "fuzzer_protocol"
+rust-version.workspace = true
+version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[features]
+client = ["dep:tokio"]
+server = ["dep:log"]
+
+[dependencies]
+color-eyre.workspace = true
+log.optional = true
+log.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+tokio.optional = true
+tokio.workspace = true

@@ -1,0 +1,55 @@
+ARG VERSION=4.7.3
+ARG PROGRAM=pdns-recursor
+
+FROM fedora:37 AS BUILDER
+ARG VERSION
+ARG PROGRAM
+LABEL fuzzee="${PROGRAM}--builder"
+
+RUN true \
+    && dnf upgrade -y --refresh
+
+# Boost, OpenSSL and Lua are required
+RUN true \
+    && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "dnf-command(builddep)" \
+    "clang" \
+    "compiler-rt" \
+    "bzip2" \
+    && dnf builddep -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "pdns-recursor" \
+  && dnf clean all
+
+WORKDIR /project
+RUN curl --output /project/${PROGRAM}.tar.bz2 https://downloads.powerdns.com/releases/pdns-recursor-${VERSION}.tar.bz2
+
+COPY ./tools/cc ./tools/cxx ./tools/libcoverage.a /usr/local/bin/
+COPY ./${PROGRAM}/build_${PROGRAM}.sh /project/
+RUN ./build_${PROGRAM}.sh
+
+FROM fedora:37
+ARG PROGRAM
+ARG INSTALL_DEBUG_TOOLS=""
+LABEL fuzzee="${PROGRAM}"
+RUN echo "${PROGRAM}" > /fuzzee
+
+RUN true \
+  && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+  "boost" \
+  "libsodium" \
+  "luajit" \
+  && dnf clean all
+
+# Runtime directory for sockets
+RUN mkdir /var/run/pdns-recursor
+
+# Install some debugging tools
+RUN --mount=type=bind,source=./tools,target=/tmp/tools bash /tmp/tools/install_debug_tools.sh
+
+COPY --from=BUILDER /usr/local /usr/local
+COPY ./${PROGRAM}/recursor.conf ./${PROGRAM}/root.hints /usr/local/etc/pdns/
+COPY ./tools/dnsauth ./${PROGRAM}/fuzzee /usr/local/bin/
+VOLUME [ "/config" ]
+WORKDIR /config
+ENTRYPOINT ["/usr/local/bin/dnsauth"]
+CMD [ "--config=/config/config.toml", "--fuzz-suite=/config/fuzz-suite.postcard", "--delayed-startup", "--ntests=50" ]

@@ -1,0 +1,8 @@
+disallowed-methods = [
+    {path = "std::fs::remove_dir_all", reason = "No sync filesystem access"},
+    {path = "std::fs::create_dir_all", reason = "No sync filesystem access"},
+    # {path = "misc_utils::fs::file_write", reason = "No sync filesystem access"},
+]
+disallowed-types = [
+    {path = "std::sync::Mutex", reason = "No sync types"},
+]

@@ -1,0 +1,16 @@
+[package]
+edition.workspace = true
+name = "coverage"
+rust-version.workspace = true
+version.workspace = true
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+fuzzer_protocol.features = ["server"]
+fuzzer_protocol.workspace = true
+libc.workspace = true
+log.workspace = true

@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+exec /usr/local/sbin/kresd --config=/usr/local/etc/knot-resolver/kresd.conf --noninteractive

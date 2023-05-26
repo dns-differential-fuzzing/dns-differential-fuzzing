@@ -1,0 +1,241 @@
+    .fuzz_case.check_cache.#size                              4                                     4                                                                                   
+    .fuzz_case.check_cache.0                                  fnbhv.test.fuzz.-A-IN                 fnbhv.test.fuzz.-A-IN                                                               
+    .fuzz_case.check_cache.1                                  fnbhv.test.fuzz.-CNAME-CH             fnbhv.test.fuzz.-CNAME-CH                                                           
+    .fuzz_case.check_cache.2                                  fnbhv.test.fuzz.-SRV-IN               fnbhv.test.fuzz.-SRV-IN                                                             
+    .fuzz_case.check_cache.3                                  fnbhv.test.fuzz.-SRV-ANY              fnbhv.test.fuzz.-SRV-ANY                                                            
+    .fuzz_case.client_query.additionals.#count                0                                     0                                                                                   
+    .fuzz_case.client_query.answers.#count                    0                                     0                                                                                   
+    .fuzz_case.client_query.edns.dnssec_ok                    false                                 false                                                                               
+    .fuzz_case.client_query.edns.max_payload                  1200                                  1200                                                                                
+    .fuzz_case.client_query.edns.version                      0                                     0                                                                                   
+    .fuzz_case.client_query.header.additional_count           1                                     1                                                                                   
+    .fuzz_case.client_query.header.answer_count               0                                     0                                                                                   
+    .fuzz_case.client_query.header.authentic_data             false                                 false                                                                               
+    .fuzz_case.client_query.header.authoritative              false                                 false                                                                               
+    .fuzz_case.client_query.header.checking_disabled          true                                  true                                                                                
+    .fuzz_case.client_query.header.id                         0                                     0                                                                                   
+    .fuzz_case.client_query.header.message_type               query                                 query                                                                               
+    .fuzz_case.client_query.header.name_server_count          0                                     0                                                                                   
+    .fuzz_case.client_query.header.op_code                    query                                 query                                                                               
+    .fuzz_case.client_query.header.query_count                1                                     1                                                                                   
+    .fuzz_case.client_query.header.recursion_available        false                                 false                                                                               
+    .fuzz_case.client_query.header.recursion_desired          true                                  true                                                                                
+    .fuzz_case.client_query.header.response_code              NoError                               NoError                                                                             
+    .fuzz_case.client_query.header.truncated                  false                                 false                                                                               
+    .fuzz_case.client_query.name_servers.#count               0                                     0                                                                                   
+    .fuzz_case.client_query.queries.#count                    1                                     1                                                                                   
+    .fuzz_case.client_query.queries.0.name                    fnbhv.test.fuzz.                      fnbhv.test.fuzz.                                                                    
+    .fuzz_case.client_query.queries.0.query_class             ANY                                   ANY                                                                                 
+    .fuzz_case.client_query.queries.0.query_type              SRV                                   SRV                                                                                 
+    .fuzz_case.client_query.sig0.#count                       0                                     0                                                                                   
+    .fuzz_case.id                                             000e35b0-ffa0-49c8-ba43-b46232891d91  000e35b0-ffa0-49c8-ba43-b46232891d91                                                
+    .fuzz_case.server_responses.#count                        2                                     2                                                                                   
+    .fuzz_case.server_responses.0.additionals.#count          0                                     0                                                                                   
+    .fuzz_case.server_responses.0.answers.#count              1                                     1                                                                                   
+    .fuzz_case.server_responses.0.answers.0.dns_class         CH                                    CH                                                                                  
+    .fuzz_case.server_responses.0.answers.0.name_labels       fnbhv.test.fuzz.                      fnbhv.test.fuzz.                                                                    
+    .fuzz_case.server_responses.0.answers.0.rdata             horyb.test.fuzz.                      horyb.test.fuzz.                                                                    
+    .fuzz_case.server_responses.0.answers.0.rr_type           CNAME                                 CNAME                                                                               
+    .fuzz_case.server_responses.0.answers.0.ttl               16666                                 16666                                                                               
+    .fuzz_case.server_responses.0.edns.dnssec_ok              false                                 false                                                                               
+    .fuzz_case.server_responses.0.edns.max_payload            1200                                  1200                                                                                
+    .fuzz_case.server_responses.0.edns.version                0                                     0                                                                                   
+    .fuzz_case.server_responses.0.header.additional_count     1                                     1                                                                                   
+    .fuzz_case.server_responses.0.header.answer_count         1                                     1                                                                                   
+    .fuzz_case.server_responses.0.header.authentic_data       false                                 false                                                                               
+    .fuzz_case.server_responses.0.header.authoritative        true                                  true                                                                                
+    .fuzz_case.server_responses.0.header.checking_disabled    false                                 false                                                                               
+    .fuzz_case.server_responses.0.header.id                   0                                     0                                                                                   
+    .fuzz_case.server_responses.0.header.message_type         response                              response                                                                            
+    .fuzz_case.server_responses.0.header.name_server_count    0                                     0                                                                                   
+    .fuzz_case.server_responses.0.header.op_code              query                                 query                                                                               
+    .fuzz_case.server_responses.0.header.query_count          1                                     1                                                                                   
+    .fuzz_case.server_responses.0.header.recursion_available  false                                 false                                                                               
+    .fuzz_case.server_responses.0.header.recursion_desired    false                                 false                                                                               
+    .fuzz_case.server_responses.0.header.response_code        NoError                               NoError                                                                             
+    .fuzz_case.server_responses.0.header.truncated            false                                 false                                                                               
+    .fuzz_case.server_responses.0.name_servers.#count         0                                     0                                                                                   
+    .fuzz_case.server_responses.0.queries.#count              1                                     1                                                                                   
+    .fuzz_case.server_responses.0.queries.0.name              fnbhv.test.fuzz.                      fnbhv.test.fuzz.                                                                    
+    .fuzz_case.server_responses.0.queries.0.query_class       IN                                    IN                                                                                  
+    .fuzz_case.server_responses.0.queries.0.query_type        SRV                                   SRV                                                                                 
+    .fuzz_case.server_responses.0.sig0.#count                 0                                     0                                                                                   
+    .fuzz_case.server_responses.1.additionals.#count          0                                     0                                                                                   
+    .fuzz_case.server_responses.1.answers.#count              0                                     0                                                                                   
+    .fuzz_case.server_responses.1.edns.dnssec_ok              false                                 false                                                                               
+    .fuzz_case.server_responses.1.edns.max_payload            1200                                  1200                                                                                
+    .fuzz_case.server_responses.1.edns.version                0                                     0                                                                                   
+    .fuzz_case.server_responses.1.header.additional_count     1                                     1                                                                                   
+    .fuzz_case.server_responses.1.header.answer_count         0                                     0                                                                                   
+    .fuzz_case.server_responses.1.header.authentic_data       false                                 false                                                                               
+    .fuzz_case.server_responses.1.header.authoritative        true                                  true                                                                                
+    .fuzz_case.server_responses.1.header.checking_disabled    false                                 false                                                                               
+    .fuzz_case.server_responses.1.header.id                   0                                     0                                                                                   
+    .fuzz_case.server_responses.1.header.message_type         response                              response                                                                            
+    .fuzz_case.server_responses.1.header.name_server_count    0                                     0                                                                                   
+    .fuzz_case.server_responses.1.header.op_code              query                                 query                                                                               
+    .fuzz_case.server_responses.1.header.query_count          1                                     1                                                                                   
+    .fuzz_case.server_responses.1.header.recursion_available  false                                 false                                                                               
+    .fuzz_case.server_responses.1.header.recursion_desired    true                                  true                                                                                
+    .fuzz_case.server_responses.1.header.response_code        NoError                               NoError                                                                             
+    .fuzz_case.server_responses.1.header.truncated            false                                 false                                                                               
+    .fuzz_case.server_responses.1.name_servers.#count         0                                     0                                                                                   
+    .fuzz_case.server_responses.1.queries.#count              1                                     1                                                                                   
+    .fuzz_case.server_responses.1.queries.0.name              fnbhv.test.fuzz.                      fnbhv.test.fuzz.                                                                    
+    .fuzz_case.server_responses.1.queries.0.query_class       IN                                    IN                                                                                  
+    .fuzz_case.server_responses.1.queries.0.query_type        A                                     A                                                                                   
+    .fuzz_case.server_responses.1.sig0.#count                 0                                     0                                                                                   
+ .  .fuzz_result.cache_state.fnbhv.0000.fuzz.-A-IN            error                                 absent                                                       TodoCacheIgnoredForNow 
+ .  .fuzz_result.cache_state.fnbhv.0000.fuzz.-CNAME-CH        error                                 present                                                      TodoCacheIgnoredForNow 
+ .  .fuzz_result.cache_state.fnbhv.0000.fuzz.-SRV-ANY         error                                 present                                                      TodoCacheIgnoredForNow 
+ .  .fuzz_result.cache_state.fnbhv.0000.fuzz.-SRV-IN          error                                 present                                                      TodoCacheIgnoredForNow 
+ .  .fuzz_result.counters                                     3617                                  23761                                                        IncomparableCounters   
+ .  .fuzz_result.fuzzee_queries.#count                        2                                     4                                                            MetaDiff               
+    .fuzz_result.fuzzee_queries.0.additionals.#count          0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.0.answers.#count              0                                     0                                                                                   
+ .  .fuzz_result.fuzzee_queries.0.edns.dnssec_ok                                                    true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.0.edns.max_payload                                                  1232                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.0.edns.version                                                      0                                                            NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.0.header.additional_count     0                                     1                                                            NoEdnsSupport          
+    .fuzz_result.fuzzee_queries.0.header.answer_count         0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.0.header.authentic_data       false                                 false                                                                               
+    .fuzz_result.fuzzee_queries.0.header.authoritative        false                                 false                                                                               
+ .  .fuzz_result.fuzzee_queries.0.header.checking_disabled    false                                 true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.0.header.id                   40784                                 10889                                                        DnsId                  
+    .fuzz_result.fuzzee_queries.0.header.message_type         query                                 query                                                                               
+    .fuzz_result.fuzzee_queries.0.header.name_server_count    0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.0.header.op_code              query                                 query                                                                               
+    .fuzz_result.fuzzee_queries.0.header.query_count          1                                     1                                                                                   
+    .fuzz_result.fuzzee_queries.0.header.recursion_available  false                                 false                                                                               
+    .fuzz_result.fuzzee_queries.0.header.recursion_desired    false                                 false                                                                               
+    .fuzz_result.fuzzee_queries.0.header.response_code        NoError                               NoError                                                                             
+    .fuzz_result.fuzzee_queries.0.header.truncated            false                                 false                                                                               
+    .fuzz_result.fuzzee_queries.0.name_servers.#count         0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.0.queries.#count              1                                     1                                                                                   
+    .fuzz_result.fuzzee_queries.0.queries.0.name              fnbhv.0000.fuzz.                      fnbhv.0000.fuzz.                                                                    
+    .fuzz_result.fuzzee_queries.0.queries.0.query_class       IN                                    IN                                                                                  
+ *  .fuzz_result.fuzzee_queries.0.queries.0.query_type        SRV                                   A                                                                                   
+    .fuzz_result.fuzzee_queries.0.sig0.#count                 0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.1.additionals.#count          0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.1.answers.#count              0                                     0                                                                                   
+ .  .fuzz_result.fuzzee_queries.1.edns.dnssec_ok                                                    true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.1.edns.max_payload                                                  1232                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.1.edns.version                                                      0                                                            NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.1.header.additional_count     0                                     1                                                            NoEdnsSupport          
+    .fuzz_result.fuzzee_queries.1.header.answer_count         0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.1.header.authentic_data       false                                 false                                                                               
+    .fuzz_result.fuzzee_queries.1.header.authoritative        false                                 false                                                                               
+ .  .fuzz_result.fuzzee_queries.1.header.checking_disabled    false                                 true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.1.header.id                   37990                                 37365                                                        DnsId                  
+    .fuzz_result.fuzzee_queries.1.header.message_type         query                                 query                                                                               
+    .fuzz_result.fuzzee_queries.1.header.name_server_count    0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.1.header.op_code              query                                 query                                                                               
+    .fuzz_result.fuzzee_queries.1.header.query_count          1                                     1                                                                                   
+    .fuzz_result.fuzzee_queries.1.header.recursion_available  false                                 false                                                                               
+    .fuzz_result.fuzzee_queries.1.header.recursion_desired    false                                 false                                                                               
+    .fuzz_result.fuzzee_queries.1.header.response_code        NoError                               NoError                                                                             
+    .fuzz_result.fuzzee_queries.1.header.truncated            false                                 false                                                                               
+    .fuzz_result.fuzzee_queries.1.name_servers.#count         0                                     0                                                                                   
+    .fuzz_result.fuzzee_queries.1.queries.#count              1                                     1                                                                                   
+ *  .fuzz_result.fuzzee_queries.1.queries.0.name              horyb.0000.fuzz.                      fnbhv.0000.fuzz.                                                                    
+    .fuzz_result.fuzzee_queries.1.queries.0.query_class       IN                                    IN                                                                                  
+    .fuzz_result.fuzzee_queries.1.queries.0.query_type        SRV                                   SRV                                                                                 
+    .fuzz_result.fuzzee_queries.1.sig0.#count                 0                                     0                                                                                   
+ .  .fuzz_result.fuzzee_queries.2.additionals.#count                                                0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_queries.2.answers.#count                                                    0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_queries.2.edns.dnssec_ok                                                    true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.2.edns.max_payload                                                  1232                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.2.edns.version                                                      0                                                            NoEdnsSupport          
+ *  .fuzz_result.fuzzee_queries.2.header.additional_count                                           1                                                                                   
+ *  .fuzz_result.fuzzee_queries.2.header.answer_count                                               0                                                                                   
+ *  .fuzz_result.fuzzee_queries.2.header.authentic_data                                             false                                                                               
+ *  .fuzz_result.fuzzee_queries.2.header.authoritative                                              false                                                                               
+ .  .fuzz_result.fuzzee_queries.2.header.checking_disabled                                          true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.2.header.id                                                         22980                                                        DnsId                  
+ *  .fuzz_result.fuzzee_queries.2.header.message_type                                               query                                                                               
+ *  .fuzz_result.fuzzee_queries.2.header.name_server_count                                          0                                                                                   
+ *  .fuzz_result.fuzzee_queries.2.header.op_code                                                    query                                                                               
+ *  .fuzz_result.fuzzee_queries.2.header.query_count                                                1                                                                                   
+ *  .fuzz_result.fuzzee_queries.2.header.recursion_available                                        false                                                                               
+ *  .fuzz_result.fuzzee_queries.2.header.recursion_desired                                          false                                                                               
+ *  .fuzz_result.fuzzee_queries.2.header.response_code                                              NoError                                                                             
+ *  .fuzz_result.fuzzee_queries.2.header.truncated                                                  false                                                                               
+ .  .fuzz_result.fuzzee_queries.2.name_servers.#count                                               0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_queries.2.queries.#count                                                    1                                                            MetaDiff               
+ *  .fuzz_result.fuzzee_queries.2.queries.0.name                                                    horyb.0000.fuzz.                                                                    
+ *  .fuzz_result.fuzzee_queries.2.queries.0.query_class                                             IN                                                                                  
+ *  .fuzz_result.fuzzee_queries.2.queries.0.query_type                                              A                                                                                   
+ .  .fuzz_result.fuzzee_queries.2.sig0.#count                                                       0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_queries.3.additionals.#count                                                0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_queries.3.answers.#count                                                    0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_queries.3.edns.dnssec_ok                                                    true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.3.edns.max_payload                                                  1232                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.3.edns.version                                                      0                                                            NoEdnsSupport          
+ *  .fuzz_result.fuzzee_queries.3.header.additional_count                                           1                                                                                   
+ *  .fuzz_result.fuzzee_queries.3.header.answer_count                                               0                                                                                   
+ *  .fuzz_result.fuzzee_queries.3.header.authentic_data                                             false                                                                               
+ *  .fuzz_result.fuzzee_queries.3.header.authoritative                                              false                                                                               
+ .  .fuzz_result.fuzzee_queries.3.header.checking_disabled                                          true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_queries.3.header.id                                                         34158                                                        DnsId                  
+ *  .fuzz_result.fuzzee_queries.3.header.message_type                                               query                                                                               
+ *  .fuzz_result.fuzzee_queries.3.header.name_server_count                                          0                                                                                   
+ *  .fuzz_result.fuzzee_queries.3.header.op_code                                                    query                                                                               
+ *  .fuzz_result.fuzzee_queries.3.header.query_count                                                1                                                                                   
+ *  .fuzz_result.fuzzee_queries.3.header.recursion_available                                        false                                                                               
+ *  .fuzz_result.fuzzee_queries.3.header.recursion_desired                                          false                                                                               
+ *  .fuzz_result.fuzzee_queries.3.header.response_code                                              NoError                                                                             
+ *  .fuzz_result.fuzzee_queries.3.header.truncated                                                  false                                                                               
+ .  .fuzz_result.fuzzee_queries.3.name_servers.#count                                               0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_queries.3.queries.#count                                                    1                                                            MetaDiff               
+ *  .fuzz_result.fuzzee_queries.3.queries.0.name                                                    horyb.0000.fuzz.                                                                    
+ *  .fuzz_result.fuzzee_queries.3.queries.0.query_class                                             IN                                                                                  
+ *  .fuzz_result.fuzzee_queries.3.queries.0.query_type                                              SRV                                                                                 
+ .  .fuzz_result.fuzzee_queries.3.sig0.#count                                                       0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_response.additionals.#count                                                 0                                                            MetaDiff               
+ .  .fuzz_result.fuzzee_response.answers.#count                                                     1                                                            MetaDiff               
+ *  .fuzz_result.fuzzee_response.answers.0.dns_class                                                CH                                                                                  
+ *  .fuzz_result.fuzzee_response.answers.0.name_labels                                              fnbhv.0000.fuzz.                                                                    
+ *  .fuzz_result.fuzzee_response.answers.0.rdata                                                    horyb.0000.fuzz.                                                                    
+ *  .fuzz_result.fuzzee_response.answers.0.rr_type                                                  CNAME                                                                               
+ *  .fuzz_result.fuzzee_response.answers.0.ttl                                                      16666                                                                               
+ .  .fuzz_result.fuzzee_response.edns.dnssec_ok                                                     false                                                        NoEdnsSupport          
+ .  .fuzz_result.fuzzee_response.edns.max_payload                                                   1232                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_response.edns.version                                                       0                                                            NoEdnsSupport          
+ *  .fuzz_result.fuzzee_response.header.additional_count                                            1                                                                                   
+ *  .fuzz_result.fuzzee_response.header.answer_count                                                1                                                                                   
+ *  .fuzz_result.fuzzee_response.header.authentic_data                                              false                                                                               
+ *  .fuzz_result.fuzzee_response.header.authoritative                                               false                                                                               
+ .  .fuzz_result.fuzzee_response.header.checking_disabled                                           true                                                         NoEdnsSupport          
+ .  .fuzz_result.fuzzee_response.header.id                                                          3523                                                         DnsId                  
+ *  .fuzz_result.fuzzee_response.header.message_type                                                response                                                                            
+ *  .fuzz_result.fuzzee_response.header.name_server_count                                           1                                                                                   
+ *  .fuzz_result.fuzzee_response.header.op_code                                                     query                                                                               
+ *  .fuzz_result.fuzzee_response.header.query_count                                                 1                                                                                   
+ .  .fuzz_result.fuzzee_response.header.recursion_available                                         true                                                         NonINRecursion         
+ *  .fuzz_result.fuzzee_response.header.recursion_desired                                           true                                                                                
+ *  .fuzz_result.fuzzee_response.header.response_code                                               NoError                                                                             
+ *  .fuzz_result.fuzzee_response.header.truncated                                                   false                                                                               
+ .  .fuzz_result.fuzzee_response.name_servers.#count                                                1                                                            MetaDiff               
+ *  .fuzz_result.fuzzee_response.name_servers.0.dns_class                                           IN                                                                                  
+ *  .fuzz_result.fuzzee_response.name_servers.0.name_labels                                         0000.fuzz.                                                                          
+ *  .fuzz_result.fuzzee_response.name_servers.0.rdata                                               private.server. testing.test. 15337002 1800 900 604800 1800                         
+ *  .fuzz_result.fuzzee_response.name_servers.0.rr_type                                             SOA                                                                                 
+ *  .fuzz_result.fuzzee_response.name_servers.0.ttl                                                 300                                                                                 
+ .  .fuzz_result.fuzzee_response.queries.#count                                                     1                                                            MetaDiff               
+ *  .fuzz_result.fuzzee_response.queries.0.name                                                     fnbhv.0000.fuzz.                                                                    
+ *  .fuzz_result.fuzzee_response.queries.0.query_class                                              ANY                                                                                 
+ *  .fuzz_result.fuzzee_response.queries.0.query_type                                               SRV                                                                                 
+ .  .fuzz_result.fuzzee_response.sig0.#count                                                        0                                                            MetaDiff               
+    .fuzz_result.id                                           000e35b0-ffa0-49c8-ba43-b46232891d91  000e35b0-ffa0-49c8-ba43-b46232891d91                                                
+    .fuzz_result.oracles.crashed_resolver                     false                                 false                                                                               
+    .fuzz_result.oracles.duplicate_records                    false                                 false                                                                               
+    .fuzz_result.oracles.excessive_answer_records             false                                 false                                                                               
+    .fuzz_result.oracles.excessive_queries                    false                                 false                                                                               
+    .fuzz_result.oracles.fake_data                            false                                 false                                                                               
+    .fuzz_result.oracles.responds_to_response                 false                                 false                                                                               
+ .  .fuzz_result.response_idxs.#count                         2                                     4                                                            MetaDiff               
+ *  .fuzz_result.response_idxs.0                              0                                     1                                                                                   
+ *  .fuzz_result.response_idxs.1                              usize::MAX                            0                                                                                   
+ *  .fuzz_result.response_idxs.2                                                                    usize::MAX                                                                          
+ *  .fuzz_result.response_idxs.3                                                                    usize::MAX                                                                          
+ .  .resolver_name                                            maradns                               unbound                                                      ResolverName           

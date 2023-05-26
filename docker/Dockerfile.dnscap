@@ -1,0 +1,11 @@
+FROM fedora:37
+
+RUN --mount=type=cache,target=/var/cache/dnf true \
+    && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "dnf-command(copr)" \
+    && dnf copr enable --assumeyes @dnsoarc/dnscap \
+    && dnf install --assumeyes --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "dnscap"
+
+ENTRYPOINT [ "/usr/bin/dnscap" ]
+CMD [ "-i", "any", "-g" ]

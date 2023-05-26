@@ -1,0 +1,183 @@
+    .fuzz_case.check_cache.#size                              5                                       5                                                            
+    .fuzz_case.check_cache.0                                  diysu.test.fuzz.-AAAA-IN                diysu.test.fuzz.-AAAA-IN                                     
+    .fuzz_case.check_cache.1                                  diysu.test.fuzz.-SRV-IN                 diysu.test.fuzz.-SRV-IN                                      
+    .fuzz_case.check_cache.2                                  gechu.test.fuzz.-NS-IN                  gechu.test.fuzz.-NS-IN                                       
+    .fuzz_case.check_cache.3                                  gechu.test.fuzz.-NS-ANY                 gechu.test.fuzz.-NS-ANY                                      
+    .fuzz_case.check_cache.4                                  hcpln.test.fuzz.-TXT-HS                 hcpln.test.fuzz.-TXT-HS                                      
+    .fuzz_case.client_query.additionals.#count                0                                       0                                                            
+    .fuzz_case.client_query.answers.#count                    0                                       0                                                            
+    .fuzz_case.client_query.edns.dnssec_ok                    false                                   false                                                        
+    .fuzz_case.client_query.edns.max_payload                  1200                                    1200                                                         
+    .fuzz_case.client_query.edns.version                      0                                       0                                                            
+    .fuzz_case.client_query.header.additional_count           1                                       1                                                            
+    .fuzz_case.client_query.header.answer_count               0                                       0                                                            
+    .fuzz_case.client_query.header.authentic_data             false                                   false                                                        
+    .fuzz_case.client_query.header.authoritative              false                                   false                                                        
+    .fuzz_case.client_query.header.checking_disabled          false                                   false                                                        
+    .fuzz_case.client_query.header.id                         0                                       0                                                            
+    .fuzz_case.client_query.header.message_type               query                                   query                                                        
+    .fuzz_case.client_query.header.name_server_count          0                                       0                                                            
+    .fuzz_case.client_query.header.op_code                    query                                   query                                                        
+    .fuzz_case.client_query.header.query_count                1                                       1                                                            
+    .fuzz_case.client_query.header.recursion_available        false                                   false                                                        
+    .fuzz_case.client_query.header.recursion_desired          true                                    true                                                         
+    .fuzz_case.client_query.header.response_code              NoError                                 NoError                                                      
+    .fuzz_case.client_query.header.truncated                  false                                   false                                                        
+    .fuzz_case.client_query.name_servers.#count               0                                       0                                                            
+    .fuzz_case.client_query.queries.#count                    1                                       1                                                            
+    .fuzz_case.client_query.queries.0.name                    gechu.test.fuzz.                        gechu.test.fuzz.                                             
+    .fuzz_case.client_query.queries.0.query_class             ANY                                     ANY                                                          
+    .fuzz_case.client_query.queries.0.query_type              NS                                      NS                                                           
+    .fuzz_case.client_query.sig0.#count                       0                                       0                                                            
+    .fuzz_case.id                                             016a13b1-5674-447d-98cf-9a864d73bd59    016a13b1-5674-447d-98cf-9a864d73bd59                         
+    .fuzz_case.server_responses.#count                        1                                       1                                                            
+    .fuzz_case.server_responses.0.additionals.#count          0                                       0                                                            
+    .fuzz_case.server_responses.0.answers.#count              3                                       3                                                            
+    .fuzz_case.server_responses.0.answers.0.dns_class         IN                                      IN                                                           
+    .fuzz_case.server_responses.0.answers.0.name_labels       diysu.test.fuzz.                        diysu.test.fuzz.                                             
+    .fuzz_case.server_responses.0.answers.0.rdata             18c6:aab6:e3bd:8870:e22:104d:3931:6c6f  18c6:aab6:e3bd:8870:e22:104d:3931:6c6f                       
+    .fuzz_case.server_responses.0.answers.0.rr_type           AAAA                                    AAAA                                                         
+    .fuzz_case.server_responses.0.answers.0.ttl               359397                                  359397                                                       
+    .fuzz_case.server_responses.0.answers.1.dns_class         IN                                      IN                                                           
+    .fuzz_case.server_responses.0.answers.1.name_labels       diysu.test.fuzz.                        diysu.test.fuzz.                                             
+    .fuzz_case.server_responses.0.answers.1.rdata             1 1 53 kyadc.test.fuzz.                 1 1 53 kyadc.test.fuzz.                                      
+    .fuzz_case.server_responses.0.answers.1.rr_type           SRV                                     SRV                                                          
+    .fuzz_case.server_responses.0.answers.1.ttl               590252                                  590252                                                       
+    .fuzz_case.server_responses.0.answers.2.dns_class         IN                                      IN                                                           
+    .fuzz_case.server_responses.0.answers.2.name_labels       gechu.test.fuzz.                        gechu.test.fuzz.                                             
+    .fuzz_case.server_responses.0.answers.2.rdata             kyadc.test.fuzz.                        kyadc.test.fuzz.                                             
+    .fuzz_case.server_responses.0.answers.2.rr_type           NS                                      NS                                                           
+    .fuzz_case.server_responses.0.answers.2.ttl               330826                                  330826                                                       
+    .fuzz_case.server_responses.0.edns.dnssec_ok              false                                   false                                                        
+    .fuzz_case.server_responses.0.edns.max_payload            1200                                    1200                                                         
+    .fuzz_case.server_responses.0.edns.version                0                                       0                                                            
+    .fuzz_case.server_responses.0.header.additional_count     1                                       1                                                            
+    .fuzz_case.server_responses.0.header.answer_count         3                                       3                                                            
+    .fuzz_case.server_responses.0.header.authentic_data       false                                   false                                                        
+    .fuzz_case.server_responses.0.header.authoritative        true                                    true                                                         
+    .fuzz_case.server_responses.0.header.checking_disabled    false                                   false                                                        
+    .fuzz_case.server_responses.0.header.id                   0                                       0                                                            
+    .fuzz_case.server_responses.0.header.message_type         response                                response                                                     
+    .fuzz_case.server_responses.0.header.name_server_count    1                                       1                                                            
+    .fuzz_case.server_responses.0.header.op_code              query                                   query                                                        
+    .fuzz_case.server_responses.0.header.query_count          1                                       1                                                            
+    .fuzz_case.server_responses.0.header.recursion_available  false                                   false                                                        
+    .fuzz_case.server_responses.0.header.recursion_desired    false                                   false                                                        
+    .fuzz_case.server_responses.0.header.response_code        NoError                                 NoError                                                      
+    .fuzz_case.server_responses.0.header.truncated            false                                   false                                                        
+    .fuzz_case.server_responses.0.name_servers.#count         1                                       1                                                            
+    .fuzz_case.server_responses.0.name_servers.0.dns_class    HS                                      HS                                                           
+    .fuzz_case.server_responses.0.name_servers.0.name_labels  hcpln.test.fuzz.                        hcpln.test.fuzz.                                             
+    .fuzz_case.server_responses.0.name_servers.0.rdata        pzies.test.fuzz.                        pzies.test.fuzz.                                             
+    .fuzz_case.server_responses.0.name_servers.0.rr_type      TXT                                     TXT                                                          
+    .fuzz_case.server_responses.0.name_servers.0.ttl          348088                                  348088                                                       
+    .fuzz_case.server_responses.0.queries.#count              1                                       1                                                            
+    .fuzz_case.server_responses.0.queries.0.name              gechu.test.fuzz.                        gechu.test.fuzz.                                             
+    .fuzz_case.server_responses.0.queries.0.query_class       IN                                      IN                                                           
+    .fuzz_case.server_responses.0.queries.0.query_type        NS                                      NS                                                           
+    .fuzz_case.server_responses.0.sig0.#count                 0                                       0                                                            
+    .fuzz_result.cache_state.diysu.0000.fuzz.-AAAA-IN         absent                                  absent                                                       
+    .fuzz_result.cache_state.diysu.0000.fuzz.-SRV-IN          absent                                  absent                                                       
+ *  .fuzz_result.cache_state.gechu.0000.fuzz.-NS-ANY          absent                                  present                                                      
+ *  .fuzz_result.cache_state.gechu.0000.fuzz.-NS-IN           absent                                  present                                                      
+    .fuzz_result.cache_state.hcpln.0000.fuzz.-TXT-HS          error                                   error                                                        
+ .  .fuzz_result.counters                                     74134                                   23761                                   IncomparableCounters 
+    .fuzz_result.fuzzee_queries.#count                        2                                       2                                                            
+    .fuzz_result.fuzzee_queries.0.additionals.#count          0                                       0                                                            
+    .fuzz_result.fuzzee_queries.0.answers.#count              0                                       0                                                            
+ .  .fuzz_result.fuzzee_queries.0.edns.Cookie.code            COOKIE                                                                          CookiesUnsupported   
+ .  .fuzz_result.fuzzee_queries.0.edns.Cookie.value           $\x93,\xf9j\x10\x10\x9f                                                         CookiesUnsupported   
+    .fuzz_result.fuzzee_queries.0.edns.dnssec_ok              true                                    true                                                         
+    .fuzz_result.fuzzee_queries.0.edns.max_payload            1232                                    1232                                                         
+    .fuzz_result.fuzzee_queries.0.edns.version                0                                       0                                                            
+    .fuzz_result.fuzzee_queries.0.header.additional_count     1                                       1                                                            
+    .fuzz_result.fuzzee_queries.0.header.answer_count         0                                       0                                                            
+    .fuzz_result.fuzzee_queries.0.header.authentic_data       false                                   false                                                        
+    .fuzz_result.fuzzee_queries.0.header.authoritative        false                                   false                                                        
+    .fuzz_result.fuzzee_queries.0.header.checking_disabled    true                                    true                                                         
+ .  .fuzz_result.fuzzee_queries.0.header.id                   26356                                   43348                                   DnsId                
+    .fuzz_result.fuzzee_queries.0.header.message_type         query                                   query                                                        
+    .fuzz_result.fuzzee_queries.0.header.name_server_count    0                                       0                                                            
+    .fuzz_result.fuzzee_queries.0.header.op_code              query                                   query                                                        
+    .fuzz_result.fuzzee_queries.0.header.query_count          1                                       1                                                            
+    .fuzz_result.fuzzee_queries.0.header.recursion_available  false                                   false                                                        
+    .fuzz_result.fuzzee_queries.0.header.recursion_desired    false                                   false                                                        
+    .fuzz_result.fuzzee_queries.0.header.response_code        NoError                                 NoError                                                      
+    .fuzz_result.fuzzee_queries.0.header.truncated            false                                   false                                                        
+    .fuzz_result.fuzzee_queries.0.name_servers.#count         0                                       0                                                            
+    .fuzz_result.fuzzee_queries.0.queries.#count              1                                       1                                                            
+    .fuzz_result.fuzzee_queries.0.queries.0.name              gechu.0000.fuzz.                        gechu.0000.fuzz.                                             
+    .fuzz_result.fuzzee_queries.0.queries.0.query_class       IN                                      IN                                                           
+ *  .fuzz_result.fuzzee_queries.0.queries.0.query_type        NS                                      A                                                            
+    .fuzz_result.fuzzee_queries.0.sig0.#count                 0                                       0                                                            
+    .fuzz_result.fuzzee_queries.1.additionals.#count          0                                       0                                                            
+    .fuzz_result.fuzzee_queries.1.answers.#count              0                                       0                                                            
+ *  .fuzz_result.fuzzee_queries.1.edns.dnssec_ok                                                      true                                                         
+ *  .fuzz_result.fuzzee_queries.1.edns.max_payload                                                    1232                                                         
+ *  .fuzz_result.fuzzee_queries.1.edns.version                                                        0                                                            
+ *  .fuzz_result.fuzzee_queries.1.header.additional_count     0                                       1                                                            
+    .fuzz_result.fuzzee_queries.1.header.answer_count         0                                       0                                                            
+    .fuzz_result.fuzzee_queries.1.header.authentic_data       false                                   false                                                        
+    .fuzz_result.fuzzee_queries.1.header.authoritative        false                                   false                                                        
+ *  .fuzz_result.fuzzee_queries.1.header.checking_disabled    false                                   true                                                         
+ .  .fuzz_result.fuzzee_queries.1.header.id                   16168                                   61541                                   DnsId                
+    .fuzz_result.fuzzee_queries.1.header.message_type         query                                   query                                                        
+    .fuzz_result.fuzzee_queries.1.header.name_server_count    0                                       0                                                            
+    .fuzz_result.fuzzee_queries.1.header.op_code              query                                   query                                                        
+    .fuzz_result.fuzzee_queries.1.header.query_count          1                                       1                                                            
+    .fuzz_result.fuzzee_queries.1.header.recursion_available  false                                   false                                                        
+    .fuzz_result.fuzzee_queries.1.header.recursion_desired    false                                   false                                                        
+    .fuzz_result.fuzzee_queries.1.header.response_code        NoError                                 NoError                                                      
+    .fuzz_result.fuzzee_queries.1.header.truncated            false                                   false                                                        
+    .fuzz_result.fuzzee_queries.1.name_servers.#count         0                                       0                                                            
+    .fuzz_result.fuzzee_queries.1.queries.#count              1                                       1                                                            
+    .fuzz_result.fuzzee_queries.1.queries.0.name              gechu.0000.fuzz.                        gechu.0000.fuzz.                                             
+    .fuzz_result.fuzzee_queries.1.queries.0.query_class       IN                                      IN                                                           
+    .fuzz_result.fuzzee_queries.1.queries.0.query_type        NS                                      NS                                                           
+    .fuzz_result.fuzzee_queries.1.sig0.#count                 0                                       0                                                            
+    .fuzz_result.fuzzee_response.additionals.#count           0                                       0                                                            
+ .  .fuzz_result.fuzzee_response.answers.#count               0                                       1                                       MetaDiff             
+ *  .fuzz_result.fuzzee_response.answers.0.dns_class                                                  IN                                                           
+ *  .fuzz_result.fuzzee_response.answers.0.name_labels                                                gechu.0000.fuzz.                                             
+ *  .fuzz_result.fuzzee_response.answers.0.rdata                                                      kyadc.0000.fuzz.                                             
+ *  .fuzz_result.fuzzee_response.answers.0.rr_type                                                    NS                                                           
+ *  .fuzz_result.fuzzee_response.answers.0.ttl                                                        86400                                                        
+    .fuzz_result.fuzzee_response.edns.dnssec_ok               false                                   false                                                        
+    .fuzz_result.fuzzee_response.edns.max_payload             1232                                    1232                                                         
+    .fuzz_result.fuzzee_response.edns.version                 0                                       0                                                            
+    .fuzz_result.fuzzee_response.header.additional_count      1                                       1                                                            
+ *  .fuzz_result.fuzzee_response.header.answer_count          0                                       1                                                            
+    .fuzz_result.fuzzee_response.header.authentic_data        false                                   false                                                        
+    .fuzz_result.fuzzee_response.header.authoritative         false                                   false                                                        
+    .fuzz_result.fuzzee_response.header.checking_disabled     false                                   false                                                        
+ .  .fuzz_result.fuzzee_response.header.id                    50018                                   59367                                   DnsId                
+    .fuzz_result.fuzzee_response.header.message_type          response                                response                                                     
+ *  .fuzz_result.fuzzee_response.header.name_server_count     0                                       1                                                            
+    .fuzz_result.fuzzee_response.header.op_code               query                                   query                                                        
+    .fuzz_result.fuzzee_response.header.query_count           1                                       1                                                            
+    .fuzz_result.fuzzee_response.header.recursion_available   true                                    true                                                         
+    .fuzz_result.fuzzee_response.header.recursion_desired     true                                    true                                                         
+ *  .fuzz_result.fuzzee_response.header.response_code         ServFail                                NoError                                                      
+    .fuzz_result.fuzzee_response.header.truncated             false                                   false                                                        
+ .  .fuzz_result.fuzzee_response.name_servers.#count          0                                       1                                       MetaDiff             
+ *  .fuzz_result.fuzzee_response.name_servers.0.dns_class                                             HS                                                           
+ *  .fuzz_result.fuzzee_response.name_servers.0.name_labels                                           hcpln.0000.fuzz.                                             
+ *  .fuzz_result.fuzzee_response.name_servers.0.rdata                                                 pzies.test.fuzz.                                             
+ *  .fuzz_result.fuzzee_response.name_servers.0.rr_type                                               TXT                                                          
+ *  .fuzz_result.fuzzee_response.name_servers.0.ttl                                                   86400                                                        
+    .fuzz_result.fuzzee_response.queries.#count               1                                       1                                                            
+    .fuzz_result.fuzzee_response.queries.0.name               gechu.0000.fuzz.                        gechu.0000.fuzz.                                             
+    .fuzz_result.fuzzee_response.queries.0.query_class        ANY                                     ANY                                                          
+    .fuzz_result.fuzzee_response.queries.0.query_type         NS                                      NS                                                           
+    .fuzz_result.fuzzee_response.sig0.#count                  0                                       0                                                            
+    .fuzz_result.id                                           016a13b1-5674-447d-98cf-9a864d73bd59    016a13b1-5674-447d-98cf-9a864d73bd59                         
+    .fuzz_result.oracles.crashed_resolver                     false                                   false                                                        
+    .fuzz_result.oracles.duplicate_records                    false                                   false                                                        
+    .fuzz_result.oracles.excessive_answer_records             false                                   false                                                        
+    .fuzz_result.oracles.excessive_queries                    false                                   false                                                        
+    .fuzz_result.oracles.fake_data                            false                                   false                                                        
+    .fuzz_result.oracles.responds_to_response                 false                                   false                                                        
+    .fuzz_result.response_idxs.#count                         2                                       2                                                            
+ *  .fuzz_result.response_idxs.0                              0                                       usize::MAX                                                   
+    .fuzz_result.response_idxs.1                              0                                       0                                                            
+ .  .resolver_name                                            bind9                                   unbound                                 ResolverName         

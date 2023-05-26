@@ -1,0 +1,42 @@
+ARG VERSION=3.5.0032
+ARG PROGRAM=maradns
+
+FROM fedora:37 AS BUILDER
+ARG VERSION
+ARG PROGRAM
+LABEL fuzzee="${PROGRAM}-builder"
+
+RUN true \
+    && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "dnf-command(builddep)" \
+    "clang" \
+    "compiler-rt" \
+    "git" \
+    && dnf builddep -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "maradns" \
+    && dnf clean all
+
+WORKDIR /project
+RUN curl --output /project/${PROGRAM}.tar.gz https://codeload.github.com/samboy/MaraDNS/tar.gz/refs/tags/${VERSION}
+# CAREFUL: Do not copy the full tools, as otherwise any change to the fuzzer leads to a rebuild
+# But the fuzzer is only needed in the second image.
+COPY ./tools/cc ./tools/cxx ./tools/libcoverage.a /usr/local/bin/
+COPY ./${PROGRAM}/build_${PROGRAM}.sh /project/
+RUN ./build_${PROGRAM}.sh
+
+FROM fedora:37
+ARG PROGRAM
+ARG INSTALL_DEBUG_TOOLS=""
+LABEL fuzzee="${PROGRAM}"
+RUN echo "${PROGRAM}" > /fuzzee
+
+# Install some debugging tools
+RUN --mount=type=bind,source=./tools,target=/tmp/tools bash /tmp/tools/install_debug_tools.sh
+
+COPY --from=BUILDER /usr/local /usr/local
+COPY ./${PROGRAM}/dwood3rc /usr/local/etc/
+COPY ./tools/dnsauth ./${PROGRAM}/fuzzee /usr/local/bin/
+VOLUME [ "/config" ]
+WORKDIR /config
+ENTRYPOINT [ "/usr/local/bin/dnsauth" ]
+CMD [ "--config=/config/config.toml", "--fuzz-suite=/config/fuzz-suite.postcard", "--delayed-startup", "--ntests=50" ]

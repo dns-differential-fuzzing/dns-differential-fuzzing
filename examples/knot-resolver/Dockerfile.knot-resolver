@@ -1,0 +1,57 @@
+ARG VERSION=5.5.3
+ARG PROGRAM=knot-resolver
+
+FROM fedora:37 AS BUILDER
+ARG VERSION
+ARG PROGRAM
+LABEL fuzzee="${PROGRAM}-builder"
+
+RUN true \
+    && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "dnf-command(builddep)" \
+    "clang" \
+    "git" \
+    "compiler-rt" \
+    && dnf builddep -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "knot-resolver" \
+    `# Remove optional dependencies, which cannot be disabled via meson` \
+    `# https://github.com/mesonbuild/meson/issues/8224` \
+    && dnf remove -y \
+    "systemd-devel" \
+    "libnghttp2-devel" \
+    "openssl-devel" \
+    && dnf clean all
+
+WORKDIR /project
+RUN git clone --recursive --depth 1 --branch "v${VERSION}" https://github.com/CZ-NIC/knot-resolver.git
+# CAREFUL: Do not copy the full tools, as otherwise any change to the fuzzer leads to a rebuild
+# But the fuzzer is only needed in the second image.
+COPY ./tools/cc ./tools/cxx ./tools/libcoverage.a /usr/local/bin/
+COPY ./${PROGRAM}/build_${PROGRAM}.sh /project/
+RUN ./build_${PROGRAM}.sh
+
+FROM fedora:37
+ARG PROGRAM
+ARG INSTALL_DEBUG_TOOLS=""
+LABEL fuzzee="${PROGRAM}"
+RUN echo "${PROGRAM}" > /fuzzee
+
+RUN true \
+    && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "knot-libs" \
+    "libuv" \
+    "luajit" \
+    && dnf clean all
+# Runtime directory for sockets
+RUN mkdir /var/run/knot-resolver
+
+# Install some debugging tools
+RUN --mount=type=bind,source=./tools,target=/tmp/tools bash /tmp/tools/install_debug_tools.sh
+
+COPY --from=BUILDER /usr/local /usr/local
+COPY ./${PROGRAM}/kresd.conf ./${PROGRAM}/root.hints /usr/local/etc/knot-resolver/
+COPY ./tools/dnsauth ./${PROGRAM}/fuzzee /usr/local/bin/
+VOLUME [ "/config" ]
+WORKDIR /config
+ENTRYPOINT [ "/usr/local/bin/dnsauth" ]
+CMD [ "--config=/config/config.toml", "--fuzz-suite=/config/fuzz-suite.postcard", "--delayed-startup", "--ntests=50" ]

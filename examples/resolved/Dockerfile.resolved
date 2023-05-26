@@ -1,0 +1,53 @@
+ARG VERSION=463644c83a93db3d20d574450f1106a2d0b627b9
+ARG PROGRAM=resolved
+
+FROM fedora:37 AS BUILDER
+ARG VERSION
+ARG PROGRAM
+LABEL fuzzee="${PROGRAM}-builder"
+
+RUN true \
+    && dnf install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False \
+    "dnf-command(builddep)" \
+    "clang" \
+    "compiler-rt" \
+    "git" \
+    "openssl-devel" \
+    && dnf clean all \
+    `# Install Rust toolchain` \
+    `# Do not install a default toolchain, instead rely on a toolchain file later on` \
+    && curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused -fsSL "https://sh.rustup.rs" | sh -s -- --default-toolchain stable --profile=minimal -y \
+    && true
+
+WORKDIR /project
+# Simulate a shallow clone, since that is not possible with commits
+RUN git init "${PROGRAM}" \
+    && cd "${PROGRAM}" \
+    && git remote add origin https://github.com/barrucadu/resolved.git \
+    && git fetch --depth 1 origin "${VERSION}" \
+    && git checkout FETCH_HEAD
+
+# CAREFUL: Do not copy the full tools, as otherwise any change to the fuzzer leads to a rebuild
+# But the fuzzer is only needed in the second image.
+COPY ./tools/libcoverage.so /usr/local/lib64
+COPY ./${PROGRAM}/build_${PROGRAM}.sh /project/
+# RUN cd /project/${PROGRAM} \
+#     && env GIT_COMMITTER_NAME="Bugfix Patch" GIT_COMMITTER_EMAIL="bugfix@local" git am ../*.patch
+RUN ./build_${PROGRAM}.sh
+
+FROM fedora:37
+ARG PROGRAM
+ARG INSTALL_DEBUG_TOOLS=""
+LABEL fuzzee="${PROGRAM}"
+RUN echo "${PROGRAM}" > /fuzzee
+
+# Install some debugging tools
+RUN --mount=type=bind,source=./tools,target=/tmp/tools bash /tmp/tools/install_debug_tools.sh
+
+COPY --from=BUILDER /usr/local /usr/local
+COPY ./${PROGRAM}/root.hints /usr/local/etc/resolved/zones/
+COPY ./tools/dnsauth ./${PROGRAM}/fuzzee /usr/local/bin/
+VOLUME [ "/config" ]
+WORKDIR /config
+ENTRYPOINT [ "/usr/local/bin/dnsauth" ]
+CMD [ "--config=/config/config.toml", "--fuzz-suite=/config/fuzz-suite.postcard", "--delayed-startup", "--ntests=50" ]

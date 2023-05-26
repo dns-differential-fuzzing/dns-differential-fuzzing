@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+exec /usr/local/sbin/Deadwood -f /usr/local/etc/dwood3rc

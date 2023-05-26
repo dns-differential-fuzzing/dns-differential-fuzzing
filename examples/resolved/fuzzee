@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+RUST_LOG=info exec /usr/local/sbin/resolved --interface=127.0.0.1 --zones-dir=/usr/local/etc/resolved/zones/
